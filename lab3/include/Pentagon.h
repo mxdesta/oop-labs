@@ -6,17 +6,12 @@
 
 class Pentagon : public Figure {
 public:
-    // Новый конструктор, принимающий вектор вершин
     Pentagon(const std::vector<std::pair<double, double>>& vertices);
-
-    // Конструктор по умолчанию
     Pentagon();
 
-     // Операторы присваивания
     Pentagon& operator=(const Figure& other) override;
     Pentagon& operator=(Figure&& other) noexcept override;
 
-    // Оператор сравнения на равенство
     bool operator==(const Figure& other) const override;
 
     double area() const override;
@@ -30,4 +25,4 @@ private:
     std::vector<std::pair<double, double>> vertices_;
 };
 
-#endif // PENTAGON_H
+#endif 

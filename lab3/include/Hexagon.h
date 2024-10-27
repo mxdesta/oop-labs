@@ -6,14 +6,11 @@
 
 class Hexagon : public Figure {
 public:
-    // Новый конструктор, принимающий вектор вершин
     Hexagon(const std::vector<std::pair<double, double>>& vertices);
-
-    // Конструктор по умолчанию
     Hexagon();
-    
-    Hexagon& operator=(const Figure& other) override;           // Оператор присваивания копированием
-    Hexagon& operator=(Figure&& other) noexcept override;       // Оператор присваивания перемещением
+
+    Hexagon& operator=(const Figure& other) override;           
+    Hexagon& operator=(Figure&& other) noexcept override;       
     bool operator==(const Figure& other) const override; 
 
     double area() const override;
@@ -27,4 +24,4 @@ private:
     std::vector<std::pair<double, double>> vertices_;
 };
 
-#endif // HEXAGON_H
+#endif 

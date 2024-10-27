@@ -7,10 +7,10 @@ Octagon::Octagon(const std::vector<std::pair<double, double>>& vertices) : verti
     }
 }
 
-// Пустой конструктор по умолчанию
+
 Octagon::Octagon() : vertices_(8) {}
 
-// Оператор присваивания копированием
+
 Octagon& Octagon::operator=(const Figure& other) {
     if (this != &other) {
         const Octagon* other_octagon = dynamic_cast<const Octagon*>(&other);
@@ -22,7 +22,7 @@ Octagon& Octagon::operator=(const Figure& other) {
     return *this;
 }
 
-// Оператор присваивания перемещением
+
 Octagon& Octagon::operator=(Figure&& other) noexcept {
     if (this != &other) {
         Octagon* other_octagon = dynamic_cast<Octagon*>(&other);
@@ -33,7 +33,7 @@ Octagon& Octagon::operator=(Figure&& other) noexcept {
     return *this;
 }
 
-// Оператор равенства
+
 bool Octagon::operator==(const Figure& other) const {
     const Octagon* other_octagon = dynamic_cast<const Octagon*>(&other);
     return other_octagon && this->vertices_ == other_octagon->vertices_;

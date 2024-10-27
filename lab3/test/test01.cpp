@@ -1,13 +1,13 @@
 #include <gtest/gtest.h>
-#include "../include/Hexagon.h"  // Ваши заголовки должны быть правильно прописаны
+#include "../include/Hexagon.h" 
 #include "../include/Octagon.h"
 #include "../include/FigureArray.h"
 #include "../include/Pentagon.h"
 
-// Тесты для класса Hexagon
+
 TEST(HexagonTest, AreaCalculation) {
     Hexagon hexagon(std::vector<std::pair<double, double>>{{0, 0}, {1, 0}, {1.5, 0.866}, {1, 1.732}, {0, 1.732}, {-0.5, 0.866}});
-    EXPECT_NEAR(hexagon.area(), 2.598, 1e-3); // Площадь правильного шестиугольника
+    EXPECT_NEAR(hexagon.area(), 2.598, 1e-3); 
 }
 
 TEST(HexagonTest, CenterCalculation) {
@@ -25,12 +25,12 @@ TEST(HexagonTest, AssignAndCompare) {
     EXPECT_TRUE(*h1 == *h2);
 }
 
-// Тесты для класса Pentagon
+
 TEST(PentagonTest, AreaCalculation) {
     Pentagon pentagon(std::vector<std::pair<double, double>>{
         {0, 0}, {1, 0}, {1.5, 1.0}, {0.5, 1.5}, {-0.5, 1.0}
     });
-    EXPECT_NEAR(pentagon.area(), 2, 1e-3);  // Ожидаемая площадь для правильного пятиугольника
+    EXPECT_NEAR(pentagon.area(), 2, 1e-3); 
 }
 
 TEST(PentagonTest, CenterCalculation) {
@@ -38,8 +38,8 @@ TEST(PentagonTest, CenterCalculation) {
         {0, 0}, {1, 0}, {1.5, 1.0}, {0.5, 1.5}, {-0.5, 1.0}
     });
     auto center = pentagon.center();
-    EXPECT_NEAR(center.first, 0.5, 1e-1);  // Ожидаемое значение для центра X
-    EXPECT_NEAR(center.second, 0.7, 1e-1); // Ожидаемое значение для центра Y
+    EXPECT_NEAR(center.first, 0.5, 1e-1);  
+    EXPECT_NEAR(center.second, 0.7, 1e-1);
 }
 
 TEST(PentagonTest, AssignAndCompare) {
@@ -49,13 +49,13 @@ TEST(PentagonTest, AssignAndCompare) {
     EXPECT_TRUE(*p1 == *p2);
 }
 
-// Тесты для класса Octagon
+
 TEST(OctagonTest, AreaCalculation) {
     Octagon octagon(std::vector<std::pair<double, double>>{
         {0, 0}, {1, 0}, {1.414, 0.414}, {1.414, 1.414},
         {1, 1.414}, {0, 1.414}, {-0.414, 1.414}, {-0.414, 0.414}
     });
-    EXPECT_NEAR(octagon.area(), 2.414, 1e-3);  // Исправленная площадь восьмиугольника
+    EXPECT_NEAR(octagon.area(), 2.414, 1e-3);  
 }
 
 TEST(OctagonTest, CenterCalculation) {
@@ -64,39 +64,36 @@ TEST(OctagonTest, CenterCalculation) {
         {1, 1.414}, {0, 1.414}, {-0.414, 1.414}, {-0.414, 0.414}
     });
     auto center = octagon.center();
-    EXPECT_NEAR(center.first, 0.5, 1e-1);  // Предполагаемый центр X
-    EXPECT_NEAR(center.second, 0.8, 1e-1); // Предполагаемый центр Y
+    EXPECT_NEAR(center.first, 0.5, 1e-1);  
+    EXPECT_NEAR(center.second, 0.8, 1e-1);
 }
 
 
 TEST(FigureArrayTest, AddFiguresAndCalculateTotalArea) {
     FigureArray array;
 
-    // Добавляем фигуры
+   
     Figure* hexagon = new Hexagon({{0, 0}, {1, 0}, {1.5, 0.866}, {1, 1.732}, {0, 1.732}, {-0.5, 0.866}});
     Figure* octagon = new Octagon({{0, 0}, {1, 0}, {1.414, 0.414}, {1.414, 1.414}, {1, 1.414}, {0, 1.414}, {-0.414, 1.414}, {-0.414, 0.414}});
     
     array.AddFigure(std::move(hexagon));
     array.AddFigure(std::move(octagon));
     
-    // Исправленное значение общей площади
+    
     EXPECT_NEAR(array.TotalArea(), 5.012, 1e-3); 
 }
 
 TEST(FigureArrayTest, RemoveFigureAndCheckRemainingArea) {
     FigureArray array;
     
-    // Добавляем фигуры
+    
     Figure* hexagon = new Hexagon({{0, 0}, {1, 0}, {1.5, 0.866}, {1, 1.732}, {0, 1.732}, {-0.5, 0.866}});
     Figure* octagon = new Octagon({{0, 0}, {1, 0}, {1.414, 0.414}, {1.414, 1.414}, {1, 1.414}, {0, 1.414}, {-0.414, 1.414}, {-0.414, 0.414}});
     
     array.AddFigure(std::move(hexagon));
     array.AddFigure(std::move(octagon));
-    
-    // Удаляем одну фигуру (шестиугольник)
     array.RemoveFigure(0);
     
-    // Исправленное значение оставшейся площади
     EXPECT_NEAR(array.TotalArea(), 2.414, 1e-3); 
 }
 

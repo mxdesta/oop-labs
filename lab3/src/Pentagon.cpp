@@ -7,10 +7,8 @@ Pentagon::Pentagon(const std::vector<std::pair<double, double>>& vertices) : ver
     }
 }
 
-// Пустой конструктор по умолчанию
 Pentagon::Pentagon() : vertices_(5) {}
 
-// Оператор присваивания копированием
 Pentagon& Pentagon::operator=(const Figure& other) {
     if (this != &other) {
         const Pentagon* other_pentagon = dynamic_cast<const Pentagon*>(&other);
@@ -22,7 +20,7 @@ Pentagon& Pentagon::operator=(const Figure& other) {
     return *this;
 }
 
-// Оператор присваивания перемещением
+
 Pentagon& Pentagon::operator=(Figure&& other) noexcept {
     if (this != &other) {
         Pentagon* other_pentagon = dynamic_cast<Pentagon*>(&other);
@@ -33,7 +31,7 @@ Pentagon& Pentagon::operator=(Figure&& other) noexcept {
     return *this;
 }
 
-// Оператор равенства
+
 bool Pentagon::operator==(const Figure& other) const {
     const Pentagon* other_pentagon = dynamic_cast<const Pentagon*>(&other);
     return other_pentagon && this->vertices_ == other_pentagon->vertices_;

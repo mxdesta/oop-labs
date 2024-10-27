@@ -7,7 +7,7 @@ Hexagon::Hexagon(const std::vector<std::pair<double, double>>& vertices) : verti
     }
 }
 
-// Пустой конструктор по умолчанию
+
 Hexagon::Hexagon() : vertices_(6) {}
 
 Hexagon& Hexagon::operator=(const Figure& other) {
@@ -21,7 +21,7 @@ Hexagon& Hexagon::operator=(const Figure& other) {
     return *this;
 }
 
-// Оператор присваивания перемещением
+
 Hexagon& Hexagon::operator=(Figure&& other) noexcept {
     if (this != &other) {
         Hexagon* other_hexagon = dynamic_cast<Hexagon*>(&other);
@@ -32,7 +32,7 @@ Hexagon& Hexagon::operator=(Figure&& other) noexcept {
     return *this;
 }
 
-// Оператор сравнения на равенство
+
 bool Hexagon::operator==(const Figure& other) const {
     const Hexagon* other_hexagon = dynamic_cast<const Hexagon*>(&other);
     return other_hexagon && this->vertices_ == other_hexagon->vertices_;
