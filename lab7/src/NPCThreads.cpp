@@ -90,7 +90,6 @@ void movementThreadFunction(
     std::mt19937 gen(rd());
 
     while (!game_over) {
-        // Перемещение NPC
         {
             std::shared_lock<std::shared_mutex> lock(mtx);
             for (auto& npc : npcs) {
@@ -100,32 +99,26 @@ void movementThreadFunction(
                 int dx = dxDist(gen);
                 int dy = dyDist(gen);
 
-                // Обновление позиции NPC
                 npc->move(dx, dy);
             }
         }
 
-        // Вывод текущего состояния NPC
 
-        // Проверка на близость NPC для инициирования битвы
         {
             std::unique_lock<std::shared_mutex> lock(mtx);
             for (size_t i = 0; i < npcs.size(); ++i) {
                 for (size_t j = i + 1; j < npcs.size(); ++j) {
                     if (npcs[i]->distanceTo(*npcs[j]) <= npcs[i]->getKillingRange() ||
                         npcs[j]->distanceTo(*npcs[i]) <= npcs[j]->getKillingRange()) {
-                        
-                        // Добавление NPC в очередь битв
+
                         battleQueue.push({npcs[i]->getName(), npcs[j]->getName()});
                     }
                 }
             }
         }
 
-        // Уведомление о новой битве
         battleCV.notify_one();
 
-        // Задержка между итерациями
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 }

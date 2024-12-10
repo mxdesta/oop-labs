@@ -21,7 +21,7 @@ void BattleVisitor::conductBattle(std::vector<std::unique_ptr<NPC>> &npcs, doubl
                     notify(npcs[i]->getName() + " и " + npcs[j]->getName() + " погибли.");
                     npcs.erase(npcs.begin() + j);
                     npcs.erase(npcs.begin() + i);
-                    --i; // Уменьшаем индекс, так как мы удалили два элемента
+                    --i; 
                     break;
                 } else if (firstWins) {
                     notify(npcs[i]->getName() + " убил " + npcs[j]->getName() + ".");
@@ -29,7 +29,7 @@ void BattleVisitor::conductBattle(std::vector<std::unique_ptr<NPC>> &npcs, doubl
                 } else if (secondWins) {
                     notify(npcs[j]->getName() + " убил " + npcs[i]->getName() + ".");
                     npcs.erase(npcs.begin() + i);
-                    --i; // Уменьшаем индекс, так как удален элемент на индексе i
+                    --i; 
                     break;
                 } else {
                     ++j;

@@ -26,4 +26,4 @@ void movementThreadFunction(
     std::condition_variable_any& battleCV,
     bool& game_over);
 
-#endif // NPCTHREADS_H
+#endif 

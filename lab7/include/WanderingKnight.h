@@ -12,7 +12,7 @@ public:
     int getMovementDistance() const override { return 2; }
     int getKillingRange() const override { return 4; }
 
-    bool fight(NPC &opponent) override; // Только объявление
+    bool fight(NPC &opponent) override; 
 };
 
-#endif // WANDERING_KNIGHT_H
+#endif 

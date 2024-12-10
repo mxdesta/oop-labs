@@ -12,7 +12,7 @@ public:
     int getMovementDistance() const override { return 3; }
     int getKillingRange() const override { return 5; }
 
-    bool fight(NPC &opponent) override; // Только объявление
+    bool fight(NPC &opponent) override; 
 };
 
-#endif // ELF_H
+#endif 

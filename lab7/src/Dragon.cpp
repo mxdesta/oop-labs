@@ -10,11 +10,11 @@ std::string Dragon::getType() const {
 }
 
 int Dragon::getMovementDistance() const {
-    return 3; // Дракон может двигаться на 3 клетки
+    return 3; 
 }
 
 int Dragon::getKillingRange() const {
-    return 5; // Дракон атакует на расстоянии 5 клеток
+    return 5;
 }
 
 bool Dragon::fight(NPC& opponent) {
